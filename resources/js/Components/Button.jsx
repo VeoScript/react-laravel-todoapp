@@ -3,9 +3,10 @@ import React from 'react'
 const Button = (props) => {
 
   const {
-    className,
     title,
     type,
+    icon,
+    className,
     onClick,
     disabled
   } = props
@@ -17,6 +18,7 @@ const Button = (props) => {
       onClick={onClick}
       disabled={disabled}
     >
+      {icon}
       {title}
     </button>
   )

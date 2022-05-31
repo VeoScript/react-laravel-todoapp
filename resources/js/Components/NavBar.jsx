@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link } from '@inertiajs/inertia-react'
+import { RiAddLine, RiArrowGoBackLine } from 'react-icons/ri'
 
 const NavBar = () => {
+
   const { pathname } = window.location
+
   return (
     <div className="flex items-center justify-between w-full p-4 rounded-md bg-[#0A6AF3]">
       <h1 className="font-bold text-xl text-default">
@@ -11,17 +14,17 @@ const NavBar = () => {
       {pathname === '/' && (
         <Link
           href="/new"
-          className="w-[6rem] p-2 rounded-md text-center text-xs text-[#2C384C] bg-[#D9E9FB] transition ease-in-out duration-200 hover:bg-opacity-90"
+          className="p-1 rounded-full text-center text-xs text-[#D9E9FB] border-2 border-[#D9E9FB] transition ease-in-out duration-200 transform hover:scale-95"
         >
-          New Task
+          <RiAddLine className="w-6 h-6" />
         </Link>
       )}
       {pathname === '/new' && (
         <Link
           href="/"
-          className="w-[6rem] p-2 rounded-md text-center text-xs text-[#2C384C] bg-[#D9E9FB] transition ease-in-out duration-200 hover:bg-opacity-90"
+          className="p-1 rounded-full text-center text-xs text-[#D9E9FB] border-2 border-[#D9E9FB] transition ease-in-out duration-200 transform hover:scale-95"
         >
-          Return
+          <RiArrowGoBackLine className="w-6 h-6" />
         </Link>
       )}
     </div>
