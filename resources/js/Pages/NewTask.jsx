@@ -2,9 +2,9 @@ import React from 'react'
 import Main from '@/Layouts/Main'
 import NavBar from '@/Components/NavBar'
 import AddTask from '@/Layouts/AddTask'
-import { Link, Head } from '@inertiajs/inertia-react'
+import { Head } from '@inertiajs/inertia-react'
 
-export default function Home(props) {
+export default function NewTask() {
   return (
     <>
       <Head>

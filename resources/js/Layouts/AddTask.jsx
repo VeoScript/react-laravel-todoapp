@@ -14,7 +14,7 @@ const AddTask = () => {
   }
 
   return (
-    <form onSubmit={onAddTask} className="flex flex-col items-center w-full p-3 space-y-5 bg-white">
+    <form onSubmit={onAddTask} className="flex flex-col items-center w-full p-3 rounded-md space-y-5 bg-white">
       <div className="flex flex-col w-full space-y-1">
         <label htmlFor="task">Task</label>
         <input
@@ -45,7 +45,7 @@ const AddTask = () => {
       </div>
       <div className="flex items-center justify-end w-full">
         {processing && (
-          <div className="w-[6rem] p-2 rounded-md text-base text-white bg-[#0A6AF3]">
+          <div className="w-[6rem] p-2 rounded-md text-center text-base text-white bg-[#0A6AF3]">
             Loading...
           </div>
         )}
