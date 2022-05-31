@@ -6,7 +6,8 @@ const Button = (props) => {
     className,
     title,
     type,
-    onClick
+    onClick,
+    disabled
   } = props
 
   return (
@@ -14,6 +15,7 @@ const Button = (props) => {
       className={className}
       type={type}
       onClick={onClick}
+      disabled={disabled}
     >
       {title}
     </button>
