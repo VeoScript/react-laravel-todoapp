@@ -4502,21 +4502,20 @@ var List = function List(_ref) {
       })]
     }), props === null || props === void 0 ? void 0 : props.tasks.map(function (task) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
-        className: "flex flex-row items-center justify-between w-full p-5 cursor-pointer border-b border-zinc-200 transition ease-in-out duration-200 hover:bg-info",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-          children: task.task
+        className: "flex flex-row items-center justify-between w-full p-5 cursor-pointer\n            ".concat(task.status === 'Done' ? 'bg-[#D9E9FB]' : 'bg-[#FFFFFF]', "\n            border-b border-zinc-200 transition ease-in-out duration-200 hover:bg-info"),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "flex flex-col items-start space-y-1",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+            children: task.task
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+            className: "flex px-1 rounded-md text-center text-xs text-white bg-[#8D54FF]",
+            children: task.type
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "flex-items-center space-x-2",
+          className: "flex-items-center space-x-1",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            className: "w-[4rem] p-1 rounded-md text-xs text-white bg-[#0A6AF3] transition ease-in-out duration-200 hover:bg-opacity-50",
-            title: "Done",
-            type: "button",
-            onClick: function onClick() {
-              console.log('This is Done Button');
-            }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            className: "w-[4rem] p-1 rounded-md text-xs text-white bg-[#E94A4E] transition ease-in-out duration-200 hover:bg-opacity-50",
-            title: "Delete",
+            className: "w-[4rem] p-1 rounded-md text-xs ".concat(task.status === 'Done' ? 'border border-[#0A6AF3] bg-none text-[#0A6AF3]' : 'text-white bg-[#0A6AF3]', " transition ease-in-out duration-200 hover:bg-opacity-50"),
+            title: task.status === 'Done' ? 'Undone' : 'Done',
             type: "button",
             onClick: /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
               return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -4524,7 +4523,9 @@ var List = function List(_ref) {
                   switch (_context.prev = _context.next) {
                     case 0:
                       _context.next = 2;
-                      return axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("/delete-task/".concat(task.id));
+                      return axios__WEBPACK_IMPORTED_MODULE_2___default().put("/update-task/".concat(task.id), {
+                        status: "".concat(task.status === 'Done' ? 'Undone' : 'Done')
+                      });
 
                     case 2:
                     case "end":
@@ -4532,6 +4533,25 @@ var List = function List(_ref) {
                   }
                 }
               }, _callee);
+            }))
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            className: "w-[4rem] p-1 rounded-md text-xs text-white bg-[#E94A4E] transition ease-in-out duration-200 hover:bg-opacity-50",
+            title: "Delete",
+            type: "button",
+            onClick: /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+              return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      _context2.next = 2;
+                      return axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("/delete-task/".concat(task.id));
+
+                    case 2:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2);
             }))
           })]
         })]

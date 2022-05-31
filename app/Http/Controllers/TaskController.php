@@ -19,12 +19,24 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
+        $status = 'Undone';
+
         $tasks = new Tasks;
         $tasks->task = $request->task;
         $tasks->type = $request->type;
+        $tasks->status = $status;
         $tasks->save();
         
         return Redirect::route('home');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $tasks = Tasks::findOrFail($id);
+        $tasks->status = $request->input('status');
+        $tasks->update();
+
+        return response()->json($tasks->find($tasks->id));
     }
 
     public function destroy($id)

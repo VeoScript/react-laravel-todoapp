@@ -23,4 +23,5 @@ Route::inertia('/new', 'NewTask')->name('newtask');
 // Routes for API Request Route
 Route::get('show-task', [TaskController::class, 'show'])->name('task.show');
 Route::post('add-task', [TaskController::class, 'store'])->name('task.store');
+Route::put('update-task/{id}', [TaskController::class, 'update'])->name('task.update');
 Route::delete('delete-task/{id}', [TaskController::class, 'destroy'])->name('task.destroy');
