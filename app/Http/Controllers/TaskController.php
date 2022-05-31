@@ -10,7 +10,8 @@ class TaskController extends Controller
 {   
     public function show(Request $request, Tasks $tasks)
     {
-        $allTasks = $tasks->all();
+        // $allTasks = $tasks->all(); -- code for displaying all data without orderby
+        $allTasks = $tasks->orderBy('id', 'desc')->get();
         return response()->json([
             'tasks' => $allTasks
         ]);
@@ -24,5 +25,10 @@ class TaskController extends Controller
         $tasks->save();
         
         return Redirect::route('home');
+    }
+
+    public function destroy($id)
+    {
+        Tasks::findOrFail($id)->delete();
     }
 }
