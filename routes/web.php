@@ -2,6 +2,7 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
 use Inertia\Inertia;
 
 /*
@@ -15,16 +16,10 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Home', [
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+// Routes for Pages
+Route::inertia('/', 'Home')->name('home');
+Route::inertia('/new', 'NewTask')->name('newtask');
 
-Route::get('/new', function () {
-    return Inertia::render('NewTask', [
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+// Routes for API Request Route
+Route::get('show-task', [TaskController::class, 'show'])->name('task.show');
+Route::post('add-task', [TaskController::class, 'store'])->name('task.store');

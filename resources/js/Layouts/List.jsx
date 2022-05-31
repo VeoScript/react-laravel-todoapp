@@ -19,7 +19,7 @@ const List = () => {
           </Link>
           <div className="flex-items-center space-x-2">
             <Button
-              className="w-[6rem] p-2 rounded-md text-xs text-white bg-[#0A6AF3] transition ease-in-out duration-200 hover:bg-opacity-50"
+              className="w-[5rem] p-1 rounded-md text-xs text-white bg-[#0A6AF3] transition ease-in-out duration-200 hover:bg-opacity-50"
               title="Done"
               type="button"
               onClick={() => {
@@ -27,7 +27,7 @@ const List = () => {
               }}
             />
             <Button
-              className="w-[6rem] p-2 rounded-md text-xs text-white bg-[#E94A4E] transition ease-in-out duration-200 hover:bg-opacity-50"
+              className="w-[5rem] p-1 rounded-md text-xs text-white bg-[#E94A4E] transition ease-in-out duration-200 hover:bg-opacity-50"
               title="Delete"
               type="button"
               onClick={() => {
